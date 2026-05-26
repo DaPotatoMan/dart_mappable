@@ -94,9 +94,9 @@ extension ArgumentProperty on ArgumentList {
   AstNode? getArgument(dynamic property) {
     for (var i = 0; i < arguments.length; i++) {
       var arg = arguments[i];
-      if (arg is NamedExpression && property is String) {
-        if (arg.name.label.name == property) {
-          return arg.expression;
+      if (arg is NamedArgument && property is String) {
+        if (arg.name.lexeme == property) {
+          return arg.argumentExpression;
         }
       } else if (property is int && i == property) {
         return arg;

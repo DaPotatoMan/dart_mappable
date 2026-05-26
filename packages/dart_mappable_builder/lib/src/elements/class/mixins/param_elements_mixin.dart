@@ -157,11 +157,11 @@ mixin ParamElementsMixin on MapperElement<ClassElement> {
             if (arg.name == param.name) {
               return superConstructor.formalParameters[i];
             }
-          } else if (arg is NamedExpression) {
-            var exp = arg.expression;
+          } else if (arg is NamedArgument) {
+            var exp = arg.argumentExpression;
             if (exp is SimpleIdentifier) {
               if (exp.name == param.name) {
-                var superName = arg.name.label.name;
+                var superName = arg.name.lexeme;
                 return superConstructor.formalParameters.firstWhere(
                   (p) => p.isNamed && p.name == superName,
                 );
